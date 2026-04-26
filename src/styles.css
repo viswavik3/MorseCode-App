@@ -1,0 +1,80 @@
+@import url("https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    color-scheme: dark;
+    --bg: 4 9 20;
+    --bg-secondary: 10 17 34;
+    --card: 12 20 39;
+    --card-elevated: 17 27 50;
+    --border: 148 163 184;
+    --text: 239 246 255;
+    --muted: 148 163 184;
+    --accent: 56 189 248;
+    --accent-strong: 14 165 233;
+    --accent-soft: 34 211 238;
+    --success: 16 185 129;
+    --warning: 251 191 36;
+  }
+
+  .light {
+    color-scheme: light;
+    --bg: 240 249 255;
+    --bg-secondary: 226 232 240;
+    --card: 255 255 255;
+    --card-elevated: 248 250 252;
+    --border: 148 163 184;
+    --text: 15 23 42;
+    --muted: 71 85 105;
+    --accent: 3 105 161;
+    --accent-strong: 2 132 199;
+    --accent-soft: 14 165 233;
+    --success: 5 150 105;
+    --warning: 202 138 4;
+  }
+
+  * {
+    @apply border-white/10;
+  }
+
+  html {
+    @apply scroll-smooth;
+  }
+
+  body {
+    @apply min-h-screen bg-[rgb(var(--bg))] text-[rgb(var(--text))] antialiased transition-colors duration-300;
+    background-image:
+      linear-gradient(180deg, rgba(var(--bg-secondary), 0.78), rgba(var(--bg), 1)),
+      radial-gradient(circle at top, rgba(var(--accent), 0.12), transparent 28%);
+  }
+
+  #root {
+    @apply min-h-screen;
+  }
+
+  ::selection {
+    @apply bg-sky-400/30 text-[rgb(var(--text))];
+  }
+}
+
+@layer components {
+  .panel {
+    @apply rounded-3xl border border-white/10 bg-[rgb(var(--card))]/80 shadow-glow backdrop-blur-xl;
+  }
+
+  .panel-elevated {
+    @apply rounded-3xl border border-white/10 bg-[rgb(var(--card-elevated))]/90 shadow-glow backdrop-blur-xl;
+  }
+
+  .page-title {
+    @apply text-3xl font-semibold tracking-tight md:text-4xl;
+  }
+
+  .page-copy {
+    @apply text-sm leading-6 text-[rgb(var(--muted))] md:text-base;
+  }
+}
