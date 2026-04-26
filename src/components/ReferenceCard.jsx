@@ -14,7 +14,7 @@ export default function ReferenceCard({ character, morse, category, dense = fals
           {category}
         </span>
       </div>
-      <p className="mt-3 font-mono tracking-[0.26em] text-cyan-200">{morse}</p>
+      <p className="mt-3 font-mono tracking-[0.26em] accent-text">{morse}</p>
     </div>
   );
 }

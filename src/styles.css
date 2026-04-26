@@ -17,6 +17,9 @@
     --accent: 56 189 248;
     --accent-strong: 14 165 233;
     --accent-soft: 34 211 238;
+    --accent-text: 186 230 253;
+    --accent-text-strong: 224 242 254;
+    --eyebrow: 103 232 249;
     --success: 16 185 129;
     --warning: 251 191 36;
   }
@@ -33,6 +36,9 @@
     --accent: 3 105 161;
     --accent-strong: 2 132 199;
     --accent-soft: 14 165 233;
+    --accent-text: 8 47 73;
+    --accent-text-strong: 12 74 110;
+    --eyebrow: 14 116 144;
     --success: 5 150 105;
     --warning: 202 138 4;
   }
@@ -77,5 +83,18 @@
 
   .page-copy {
     @apply text-sm leading-6 text-[rgb(var(--muted))] md:text-base;
+  }
+
+  .eyebrow {
+    @apply text-xs font-semibold uppercase tracking-[0.28em];
+    color: rgb(var(--eyebrow));
+  }
+
+  .accent-text {
+    color: rgb(var(--accent-text));
+  }
+
+  .accent-text-strong {
+    color: rgb(var(--accent-text-strong));
   }
 }

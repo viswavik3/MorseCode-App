@@ -11,16 +11,20 @@ export default function ReferencePage() {
   const [query, setQuery] = useState("");
 
   const filteredEntries = useMemo(() => {
-    const term = query.trim().toUpperCase();
-    if (!term) {
+    const rawTerm = query.trim();
+    const upperTerm = rawTerm.toUpperCase();
+    const compactMorse = rawTerm.replace(/\s+/g, "");
+
+    if (!rawTerm) {
       return MORSE_ENTRIES;
     }
 
     return MORSE_ENTRIES.filter(
       (entry) =>
-        entry.character.includes(term) ||
-        entry.morse.includes(term) ||
-        entry.category.toUpperCase().includes(term),
+        entry.character === upperTerm ||
+        entry.character.includes(upperTerm) ||
+        entry.morse.includes(compactMorse) ||
+        (rawTerm.length > 1 && entry.category.toUpperCase().includes(upperTerm)),
     );
   }, [query]);
 
@@ -43,7 +47,7 @@ export default function ReferencePage() {
             value={query}
             onChange={(event) => setQuery(event.target.value)}
             placeholder="Try A, 9, ?, or .-"
-            className="w-full rounded-2xl border border-white/10 bg-white/5 py-3 pl-11 pr-4 outline-none transition placeholder:text-[rgb(var(--muted))] focus:border-cyan-300/40 focus:bg-white/[0.08]"
+            className="w-full rounded-2xl border border-white/10 bg-white/5 py-3 pl-11 pr-4 text-[rgb(var(--text))] outline-none transition placeholder:text-[rgb(var(--muted))] focus:border-cyan-300/40 focus:bg-white/[0.08]"
           />
         </div>
       </div>
@@ -90,7 +94,7 @@ export default function ReferencePage() {
                     className="grid grid-cols-[120px_1fr_140px] items-center border-t border-white/10 px-5 py-4"
                   >
                     <span className="text-2xl font-semibold">{entry.character}</span>
-                    <span className="font-mono tracking-[0.28em] text-cyan-200">{entry.morse}</span>
+                    <span className="font-mono tracking-[0.28em] accent-text">{entry.morse}</span>
                     <span className="text-sm text-[rgb(var(--muted))]">{entry.category}</span>
                   </div>
                 ))}
@@ -104,6 +108,16 @@ export default function ReferencePage() {
             </section>
           );
         })}
+
+        {query.trim() && filteredEntries.length === 0 ? (
+          <div className="panel px-5 py-8 text-center md:px-6">
+            <h3 className="text-lg font-semibold">No matches found</h3>
+            <p className="mt-2 text-sm text-[rgb(var(--muted))]">
+              Try a character like `A`, a Morse pattern like `.-`, or a category
+              like `Numbers`.
+            </p>
+          </div>
+        ) : null}
       </div>
     </section>
   );
