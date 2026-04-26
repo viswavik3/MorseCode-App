@@ -65,7 +65,7 @@ export default function ReversePage() {
         </div>
 
         <div className="panel px-5 py-5 md:px-6">
-          <div className="flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.24em] text-cyan-200/80">
+          <div className="eyebrow flex items-center gap-2">
             <Radio className="h-4 w-4" />
             Live Morse Output
           </div>
@@ -79,9 +79,9 @@ export default function ReversePage() {
                       "rounded-2xl border px-4 py-3 font-mono tracking-[0.28em] transition duration-300",
                       token === "/"
                         ? "border-white/10 bg-white/[0.04] text-[rgb(var(--muted))]"
-                        : "border-cyan-300/20 bg-cyan-400/10 text-cyan-100",
+                        : "border-cyan-300/20 bg-cyan-400/10 text-[rgb(var(--text))]",
                       highlightTokenIndex === index &&
-                        "border-amber-300/40 bg-amber-400/15 text-amber-50 shadow-lg shadow-amber-950/20",
+                        "border-amber-300/40 bg-amber-400/15 text-[rgb(var(--text))] shadow-lg shadow-amber-950/20",
                     ]
                       .filter(Boolean)
                       .join(" ")}

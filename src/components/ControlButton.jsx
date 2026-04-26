@@ -13,9 +13,9 @@ export default function ControlButton({
         variant === "default" &&
           "border-white/10 bg-white/5 text-[rgb(var(--text))] hover:border-white/20 hover:bg-white/10",
         variant === "primary" &&
-          "border-cyan-300/40 bg-cyan-400/15 text-cyan-50 hover:bg-cyan-400/20",
+          "border-cyan-300/40 bg-cyan-400/15 text-[rgb(var(--text))] hover:bg-cyan-400/20",
         variant === "danger" &&
-          "border-rose-400/30 bg-rose-400/10 text-rose-100 hover:bg-rose-400/20",
+          "border-rose-400/30 bg-rose-400/10 text-[rgb(var(--text))] hover:bg-rose-400/20",
         className,
       )}
       {...props}

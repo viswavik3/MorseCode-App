@@ -364,13 +364,13 @@ export default function MorseInputPage() {
           </div>
 
           <div className="panel-elevated mt-5 px-5 py-4">
-            <div className="flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.25em] text-cyan-200/80">
+            <div className="eyebrow flex items-center gap-2">
               <Sparkles className="h-4 w-4" />
               Live Input
             </div>
             <p
               data-testid="live-input-buffer"
-              className="mt-4 min-h-12 break-all font-mono text-3xl tracking-[0.35em] text-white"
+              className="mt-4 min-h-12 break-all font-mono text-3xl tracking-[0.35em] text-[rgb(var(--text))]"
             >
               {currentBuffer || ""}
             </p>
@@ -390,10 +390,10 @@ export default function MorseInputPage() {
               </ControlButton>
             </div>
             <div className="mt-5 px-3 text-center">
-              <h3 className="text-3xl font-semibold tracking-tight text-slate-100 md:text-4xl">
+              <h3 className="text-3xl font-semibold tracking-tight text-[rgb(var(--text))] md:text-4xl">
                 Tap. Hold. Translate.
               </h3>
-              <p className="mx-auto mt-3 max-w-2xl text-base leading-8 text-slate-300/90 md:text-[1.15rem]">
+              <p className="mx-auto mt-3 max-w-2xl text-base leading-8 text-[rgb(var(--muted))] md:text-[1.15rem]">
                 Short press for a dot, long press for a dash. You can also use
                 the spacebar for fast keyboard input.
               </p>
@@ -408,7 +408,7 @@ export default function MorseInputPage() {
                   Set how long a press must be before it becomes a dash.
                 </p>
               </div>
-              <div className="rounded-full border border-rose-300/20 bg-rose-400/10 px-4 py-2 text-sm font-medium text-rose-100">
+              <div className="rounded-full border border-rose-300/20 bg-rose-400/10 px-4 py-2 text-sm font-medium text-[rgb(var(--text))]">
                 {longPressThreshold} ms
               </div>
             </div>
@@ -437,7 +437,7 @@ export default function MorseInputPage() {
                   sequence is committed as a letter.
                 </p>
               </div>
-              <div className="rounded-full border border-cyan-300/20 bg-cyan-400/10 px-4 py-2 text-sm font-medium text-cyan-100">
+              <div className="rounded-full border border-cyan-300/20 bg-cyan-400/10 px-4 py-2 text-sm font-medium text-[rgb(var(--text))]">
                 {letterBreakThreshold} ms
               </div>
             </div>
@@ -473,7 +473,7 @@ export default function MorseInputPage() {
               </div>
               <Link
                 to="/reference"
-                className="mt-4 inline-flex items-center gap-2 self-start rounded-full border border-cyan-300/30 bg-cyan-400/10 px-4 py-2 text-sm font-medium text-cyan-100 transition hover:bg-cyan-400/15"
+                className="mt-4 inline-flex items-center gap-2 self-start rounded-full border border-cyan-300/30 bg-cyan-400/10 px-4 py-2 text-sm font-medium text-[rgb(var(--text))] transition hover:bg-cyan-400/15"
               >
                 Open reference
                 <ArrowRight className="h-4 w-4" />
