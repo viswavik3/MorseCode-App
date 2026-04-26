@@ -103,6 +103,23 @@ describe("MorseInputPage", () => {
     expect(screen.getByTestId("decoded-output")).toHaveValue("E");
   });
 
+  it("does not steal focus to the output field when auto-committing a letter", () => {
+    renderWithRouter(<MorseInputPage />);
+    const pad = screen.getByRole("button", { name: /signal input pad/i });
+    const output = screen.getByTestId("decoded-output");
+
+    pad.setPointerCapture = vi.fn();
+
+    act(() => {
+      fireEvent.pointerDown(pad, { pointerId: 1, pointerType: "touch" });
+      fireEvent.pointerUp(pad, { pointerId: 1, pointerType: "touch" });
+      vi.advanceTimersByTime(800);
+    });
+
+    expect(output).toHaveValue("E");
+    expect(document.activeElement).not.toBe(output);
+  });
+
   it("uses the press timeout slider to switch between dot and dash", () => {
     renderWithRouter(<MorseInputPage />);
     const pad = screen.getByRole("button", { name: /signal input pad/i });

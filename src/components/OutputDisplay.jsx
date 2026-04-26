@@ -32,7 +32,10 @@ export default function OutputDisplay({
           onClick={onSelect}
           onKeyUp={onSelect}
           placeholder={placeholder}
-          className="min-h-52 w-full resize-none bg-transparent text-lg leading-8 text-[rgb(var(--text))] outline-none placeholder:text-[rgb(var(--muted))]"
+          autoCapitalize="none"
+          autoCorrect="off"
+          spellCheck={false}
+          className="min-h-52 w-full resize-none bg-transparent text-base leading-7 text-[rgb(var(--text))] outline-none placeholder:text-[rgb(var(--muted))] md:text-lg md:leading-8"
         />
       </div>
 

@@ -50,6 +50,7 @@
     background-image:
       linear-gradient(180deg, rgba(var(--bg-secondary), 0.78), rgba(var(--bg), 1)),
       radial-gradient(circle at top, rgba(var(--accent), 0.12), transparent 28%);
+    overflow-x: hidden;
   }
 
   #root {

@@ -128,17 +128,21 @@ export default function MorseInputPage() {
     return selectionRef.current;
   }
 
-  function applySelection(start, end = start) {
+  function applySelection(start, end = start, options = {}) {
+    const { focus = false } = options;
     selectionRef.current = { start, end };
     window.setTimeout(() => {
       if (outputTextareaRef.current) {
-        outputTextareaRef.current.focus();
+        if (focus) {
+          outputTextareaRef.current.focus();
+        }
         outputTextareaRef.current.setSelectionRange(start, end);
       }
     }, 0);
   }
 
-  function insertIntoOutput(text) {
+  function insertIntoOutput(text, options = {}) {
+    const { preserveFocus = false } = options;
     const hasTextarea = Boolean(outputTextareaRef.current);
     const currentSelection = hasTextarea
       ? syncSelectionFromElement()
@@ -153,7 +157,11 @@ export default function MorseInputPage() {
         text +
         current.slice(currentSelection.end);
       decodedOutputRef.current = nextOutput;
-      applySelection(currentSelection.start + text.length);
+      applySelection(
+        currentSelection.start + text.length,
+        currentSelection.start + text.length,
+        { focus: preserveFocus && document.activeElement === outputTextareaRef.current },
+      );
       return nextOutput;
     });
   }
@@ -176,7 +184,9 @@ export default function MorseInputPage() {
       const nextOutput =
         current.slice(0, deleteStart) + current.slice(deleteEnd);
       decodedOutputRef.current = nextOutput;
-      applySelection(deleteStart);
+      applySelection(deleteStart, deleteStart, {
+        focus: document.activeElement === outputTextareaRef.current,
+      });
       return nextOutput;
     });
     setStatusText("Removed decoded character");
